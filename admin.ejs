@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel</title>
+</head>
+<body>
+    <h1>Admin Panel</h1>
+    <form action="/admin/addUser" method="POST">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username"><br>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password"><br>
+        <button type="submit">Add User</button>
+    </form>
+    
+    <ul>
+        <% users.forEach(user => { %>
+            <li><%= user.username %> <% if (user.isAdmin) { %> (Admin) <% } %> - <a href="/admin/editUser/<%= user._id %>">Edit</a> | <a href="/admin/deleteUser/<%= user._id %>">Delete</a></li>
+        <% }); %>
+    </ul>
+</body>
+</html>
